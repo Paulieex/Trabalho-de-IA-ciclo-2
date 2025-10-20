@@ -1,0 +1,69 @@
+/* Estilos para Desktop (style_desktop.css) */
+
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+        /* Remover alinhamento vertical fixo para desktop */
+        align-items: flex-start; /* Ou center, dependendo do layout desejado */
+        padding: 40px 20px; /* Ajustar padding para desktop */
+    }
+
+    .chatbot-container {
+        width: 800px; /* Largura maior para desktop */
+        max-width: 90%; /* Garante que não exceda a largura da tela */
+        padding: 40px 50px 50px; /* Mais padding para desktop */
+        flex-direction: row; /* Layout horizontal para desktop */
+        align-items: flex-start; /* Alinhar itens no topo */
+        justify-content: space-between; /* Espaço entre os elementos */
+        box-shadow: 0 12px 30px rgba(12, 24, 105, 0.25);
+    }
+
+    .chatbot-container h1 {
+        font-size: 3rem; /* Título maior */
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .chat-messages {
+        height: 450px; /* Altura maior para o histórico de chat */
+        width: 60%; /* Ocupar mais espaço */
+        margin-right: 30px; /* Espaço entre mensagens e FAQ */
+    }
+
+    .faq-box {
+        width: 40%; /* Ocupar menos espaço, ao lado das mensagens */
+        max-height: 450px; /* Altura igual ao chat-messages */
+        margin: 0; /* Remover margem automática */
+        padding: 20px 25px;
+        gap: 15px;
+    }
+
+    .faq-item {
+        padding: 12px 20px;
+        font-size: 1.1rem;
+    }
+
+    form {
+        margin-top: 30px; /* Mais espaço acima do formulário */
+        gap: 20px;
+    }
+
+    input[type="text"] {
+        padding: 15px 20px;
+        font-size: 18px;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+
+    .chatbot-response {
+        min-height: 100px; /* Maior altura para a resposta */
+        margin-top: 25px; /* Mais espaço acima da resposta */
+    }
+
+    /* Se houver elementos como logo ou título separados do chatbot-container */
+    /* Adapte-os aqui se necessário, usando as classes corretas */
+}
+

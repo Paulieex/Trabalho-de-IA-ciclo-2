@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAUniev</title>
+    <style>
+        /* Reset básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 14px;
+            background: rgba(23,16,61,1); /* Fundo roxo escuro */
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Container principal - ajustado para desktop */
+        .v3_2 {
+            width: 1200px; /* Largura fixa para desktop */
+            height: auto; /* Altura dinâmica */
+            background: rgba(23,16,61,1); /* Fundo roxo */
+            position: relative;
+            margin: 20px auto;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(237,30,30,0.5); /* Sombra vermelha */
+            overflow: hidden;
+        }
+
+        /* Top bar */
+        .v3_7 {
+            width: 100%;
+            height: auto;
+            background: rgba(16,11,42,1); /* Fundo azul escuro */
+            position: relative;
+            top: 0;
+            left: 0;
+            padding: 30px 20px 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* Logo ou imagem no topo */
+        .v73_43 {
+            width: 104px;
+            height: 94px;
+            background: url("../images/v73_43.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            float: left;
+            border-radius: 12px;
+        }
+
+        /* Título grande */
+        .v73_39 {
+            color: rgba(237,30,30,1); /* Vermelho */
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+            font-size: 60px;
+            line-height: 1.1;
+            margin-left: 150px;
+            margin-top: 10px;
+            user-select: none;
+        }
+
+        /* Área principal do chatbot */
+        .v3_26 {
+            width: 100%;
+            height: auto;
+            background: rgba(16,11,42,1); /* Fundo azul escuro */
+            margin: 20px auto;
+            border-radius: 12px;
+            padding: 30px;
+            box-sizing: border-box;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Formulário */
+        form {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        input[name="pergunta"] {
+            flex-grow: 1;
+            padding: 15px 20px;
+            font-size: 18px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            font-family: 'Times New Roman', Times, serif;
+            color: #000521; /* Texto escuro no input */
+        }
+
+        input[name="pergunta"]::placeholder {
+            color: #999;
+        }
+
+        button[type="submit"] {
+            width: 100px;
+            background: rgba(237,30,30,1); /* Vermelho */
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button[type="submit"]:hover {
+            background: rgba(180,20,20,1); /* Vermelho escuro no hover */
+        }
+
+        /* Área para mostrar a resposta */
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ed1e1e; /* Vermelho */
+            min-height: 60px;
+            white-space: pre-wrap;
+            font-size: 18px;
+        }
+
+        /* Caixa de perguntas frequentes */
+        .faq-box {
+            background-color: rgba(237,30,30,0.15); /* Fundo vermelho translúcido */
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .faq-item {
+            background-color: rgba(255,255,255,0.9); /* Branco translúcido */
+            border-radius: 20px;
+            padding: 15px 25px;
+            color: #0c1869; /* Azul escuro */
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(12, 24, 105, 0.15);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-item:hover {
+            background-color: #0c1869; /* Azul no hover */
+            color: white;
+        }
+
+        /* Textos pequenos */
+        .v3_179 {
+            position: absolute;
+            top: 151px;
+            left: 45px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+            font-size: 18px;
+            color: white;
+            user-select: none;
+        }
+
+        .v3_43 {
+            position: absolute;
+            top: 151px;
+            left: 305px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+            font-size: 16px;
+            color: white;
+            user-select: none;
+        }
+
+        /* Scrollbar */
+        .faq-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .faq-box::-webkit-scrollbar-thumb {
+            background-color: rgba(237,30,30,0.6); /* Vermelho */
+            border-radius: 4px;
+        }
+        .faq-box::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Media query para telas muito grandes */
+        @media (min-width: 1400px) {
+            .v3_2 {
+                width: 1400px;
+            }
+            .v73_39 {
+                font-size: 72px;
+            }
+            .faq-box {
+                max-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="v3_2">
+        <div class="v3_7">
+            <div class="v73_43"></div>
+            <div class="v73_39">IAUniev</div>
+        </div>
+
+        <div class="v3_26">
+            <h1 style="color: white; margin-bottom: 15px; font-size: 24px; user-select:none;">
+                Assistente Acadêmico Inteligente IAUniev
+            </h1>
+
+            <div class="faq-box" id="faq-box">
+                <div class="faq-item">Dúvidas mais frequentes que podem ser as suas também!</div>
+                <div class="faq-item">Qual professor responsável pelo curso?</div>
+                <div class="faq-item">Quanto vale a nota do trabalho final?</div>
+                <div class="faq-item">Que horas começam as aulas?</div>
+                <div class="faq-item">Onde é a minha sala?</div>
+            </div>
+
+            <form method="POST" id="chat-form">
+                <input type="text" name="pergunta" id="pergunta" placeholder="Digite sua pergunta..." autocomplete="off" required>
+                <button type="submit">Enviar</button>
+            </form>
+
+            <p id="resposta">{{ resposta }}</p>
+        </div>
+    </div>
+
+    <script>
+        // Opcional: enviar pergunta ao clicar na FAQ
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const perguntaInput = document.getElementById('pergunta');
+                perguntaInput.value = item.textContent;
+                perguntaInput.focus();
+            });
+        });
+
+        // Opcional: foco no input ao carregar
+        window.onload = () => {
+            document.getElementById('pergunta').focus();
+        };
+    </script>
+</body>
+</html>
